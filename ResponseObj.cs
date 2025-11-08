@@ -4,50 +4,58 @@ using Newtonsoft.Json;
 
 namespace APIVerve
 {
-public class rootDomain
-{
-    [JsonProperty("domain")]
-    public string domain { get; set; }
+    /// <summary>
+    /// RootDomain data
+    /// </summary>
+    public class RootDomain
+    {
+        [JsonProperty("domain")]
+        public string Domain { get; set; }
 
-    [JsonProperty("records")]
-    public string[] records { get; set; }
+        [JsonProperty("records")]
+        public string[] Records { get; set; }
 
-}
+    }
+    /// <summary>
+    /// SubDomains data
+    /// </summary>
+    public class SubDomains
+    {
+        [JsonProperty("host")]
+        public string Host { get; set; }
 
-public class subDomains
-{
-    [JsonProperty("host")]
-    public string host { get; set; }
+        [JsonProperty("records")]
+        public string[] Records { get; set; }
 
-    [JsonProperty("records")]
-    public string[] records { get; set; }
+    }
+    /// <summary>
+    /// Data data
+    /// </summary>
+    public class Data
+    {
+        [JsonProperty("count")]
+        public int Count { get; set; }
 
-}
+        [JsonProperty("rootDomain")]
+        public RootDomain RootDomain { get; set; }
 
-public class data
-{
-    [JsonProperty("rootDomain")]
-    public rootDomain rootDomain { get; set; }
+        [JsonProperty("subDomains")]
+        public SubDomains[] SubDomains { get; set; }
 
-    [JsonProperty("subDomains")]
-    public subDomains[] subDomains { get; set; }
+    }
+    /// <summary>
+    /// API Response object
+    /// </summary>
+    public class ResponseObj
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
-}
+        [JsonProperty("error")]
+        public object Error { get; set; }
 
-public class ResponseObj
-{
-    [JsonProperty("status")]
-    public string status { get; set; }
+        [JsonProperty("data")]
+        public Data Data { get; set; }
 
-    [JsonProperty("error")]
-    public object error { get; set; }
-
-    [JsonProperty("data")]
-    public data data { get; set; }
-
-    [JsonProperty("code")]
-    public int code { get; set; }
-
-}
-
+    }
 }
